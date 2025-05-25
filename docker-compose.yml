@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  dwb-trello-mcp:
+    build: .
+    container_name: dwb-trello-mcp
+    environment:
+      - TRELLO_API_KEY=${TRELLO_API_KEY}
+      - TRELLO_TOKEN=${TRELLO_TOKEN}
+      - TRELLO_BOARD_ID=${TRELLO_BOARD_ID}
+      - TRELLO_ORG_ID=${TRELLO_ORG_ID}
+      - NODE_ENV=production
+    volumes:
+      - ./templates:/app/templates:ro
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge
+
+# For development with hot reload
+  dwb-trello-mcp-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: dwb-trello-mcp-dev
+    environment:
+      - TRELLO_API_KEY=${TRELLO_API_KEY}
+      - TRELLO_TOKEN=${TRELLO_TOKEN}
+      - TRELLO_BOARD_ID=${TRELLO_BOARD_ID}
+      - TRELLO_ORG_ID=${TRELLO_ORG_ID}
+      - NODE_ENV=development
+    volumes:
+      - ./src:/app/src:ro
+      - ./templates:/app/templates:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - mcp-network
+    profiles:
+      - dev

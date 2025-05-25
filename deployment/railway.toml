@@ -1,0 +1,17 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[deploy.environmentVariables]]
+name = "NODE_ENV"
+value = "production"
+
+[[deploy.environmentVariables]]
+name = "HEALTH_CHECK_PORT"
+value = "3001"

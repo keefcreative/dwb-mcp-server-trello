@@ -1,0 +1,17 @@
+{
+  "template_name": "default_client_board",
+  "lists": [
+    "🟢 New Request",
+    "📥 Queue",
+    "🛠 In Progress",
+    "🧐 Review",
+    "✅ Completed"
+  ],
+  "fallback_lists": [
+    "New Request",
+    "Queue",
+    "In Progress",
+    "Review",
+    "Completed"
+  ]
+}

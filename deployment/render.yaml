@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: dwb-trello-mcp
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    branch: main
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HEALTH_CHECK_PORT
+        value: 3001
+      - key: TRELLO_API_KEY
+        sync: false
+      - key: TRELLO_TOKEN
+        sync: false
+      - key: TRELLO_BOARD_ID
+        sync: false
+      - key: TRELLO_ORG_ID
+        sync: false
