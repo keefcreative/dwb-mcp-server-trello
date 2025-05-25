@@ -44,7 +44,8 @@
   "homepage": "https://github.com/keithhodgetts/dwb-mcp-server-trello#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
